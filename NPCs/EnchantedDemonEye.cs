@@ -16,6 +16,7 @@ namespace MysticalMagics.NPCs
         bool isHalfHP = false;
         bool stopFacingPlayer = false;
         bool canCharge = false;
+        MNpc modnpc;
 
         public override void AI()
         {
@@ -140,7 +141,7 @@ namespace MysticalMagics.NPCs
 
         public override bool CanSpawn(int x, int y, int type, Player spawnedOn)
         {
-            if (Main.hardMode && (spawnedOn.zoneEvil || spawnedOn.zoneBlood) && !Main.dayTime && spawnedOn.zone["Surface"] && NPC.downedMechBossAny)
+            if (Main.hardMode && (spawnedOn.zoneEvil || spawnedOn.zoneBlood) && !Main.dayTime && spawnedOn.zone["Surface"] && modnpc.text)
             {   //only spawn in hardmode, in the crimson/corruption, when it's nighttime and the player is on the surface.
                 return Main.rand.Next(20) == 1;
             }

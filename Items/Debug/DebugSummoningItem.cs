@@ -15,7 +15,7 @@ namespace MysticalMagics.Items
         public override bool? UseItem(Player player)
         {
 
-            NPC.NewNPC(new Vector2(player.Center.X, player.Center.Y - 400), NPCDef.byName["MysticalMagics:EnchantedDemonEye"].type, 0);
+            NPC.NewNPC(new Vector2(player.Center.X, player.Center.Y - 400), NPCDef.byName["MysticalMagics:PosessedSarcophogus"].type, 0);
 
             return true;
         }

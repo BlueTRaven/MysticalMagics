@@ -1,0 +1,20 @@
+﻿{
+    "displayName": "Posessed Sarcophogus",
+    "size": [ 32, 96 ],
+    "texture": "Textures/NPCs/PosessedSarcophogus",
+    "scale": 2,
+    "frameCount": 1,
+    "value": [ 0, 2, 0, 0 ],
+    "aiStyle": -1,
+    "lifeMax": 60000,
+    "boss": true,
+    "noGravity": true,
+    "noTileCollide": true,
+    "soundHit": 2,
+    "soundKilled": 6,
+    "damage": 70,
+    "defense": 30,
+    "knockbackResist": 0,
+    "buffImmune": [ 24 ],
+    "npcSlots": 20
+}

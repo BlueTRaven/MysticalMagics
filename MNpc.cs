@@ -14,19 +14,14 @@ namespace MysticalMagics
 
     class MNpc : ModNPC
     {
-        public bool hasSaidText = false;
+        public bool text = false;
 
         public override void PostNPCLoot()
         {
-            if ((npc.type == 126 || npc.type == 125 || npc.type == 127 || (npc.type == 134 || npc.type == 135 || npc.type == 136)) && !hasSaidText)
+            if ((npc.type == 126 || npc.type == 125 || npc.type == 127 || (npc.type == 134 || npc.type == 135 || npc.type == 136)) && !text && !NPC.downedMechBossAny)
             {
+                text = NPC.downedMechBossAny;
                 Main.NewText("Three enchanted spirits have been released...", Color.Turquoise);
-
-                Main.NewText("" + hasSaidText);
-
-                hasSaidText = true;
-
-                Main.NewText("" + hasSaidText);
             }
         }
     }
