@@ -1,0 +1,21 @@
+﻿{ 
+    "displayName": "Item [DEBUG TOOL]",
+    "texture": "Textures/Items/Debug",
+    "size": [ 32, 32 ],
+    "useStyle": 5,
+    "maxStack": 1,
+    "value": [ 1000, 0, 0, 0 ],
+    "tooltip": "'Gives lots of debug items, increases hp, etc.'",
+    "useAnimation": 40,
+    "useTime": 40,
+    "useSound": 6,
+    "mana": 0, 
+
+    "recipes": [
+        {
+            "items": { "Dirt Block": 1 },
+            "tiles": [ "Work Bench" ],
+            "creates": 1
+        }
+    ]
+}

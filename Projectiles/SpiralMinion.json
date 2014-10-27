@@ -1,0 +1,14 @@
+﻿{
+    "displayName": "Spiral Minion",
+    "texture": "Textures/Projectiles/Player/Spiral",
+	"size": [16, 16],
+	"aiStyle": 27,
+	"timeLeft": 180,
+	"friendly": true,
+	"hostile": false,	
+	"tileCollide": true,
+	"damage": 50,
+    "magic": true,
+	"penetrate": 80,
+	"maxUpdates": 2
+}

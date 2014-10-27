@@ -1,0 +1,32 @@
+﻿{
+    "displayName": "Star Sword",
+    "texture": "Textures/Items/Weapons/StarSword",
+    "size": [ 48, 48 ],
+    "maxStack": 1,
+    "value": [ 0, 1, 50, 0 ],
+    "rare": 2,
+    "tooltip": "'The heavens above open for you!'",
+    "useStyle": 1,
+    "useAnimation": 30,
+    "useTime": 30,
+    "damage": 54,
+    "knockback": 2,
+    "useSound": 1,
+    "autoReuse": false,
+    "melee": true,
+    "shoot": 12,
+    "shootSpeed": 20,
+
+    "recipes": [
+        {
+            "items": { "Dirt Block": 1 },
+            "tiles": [ "Work Bench" ],
+            "creates": 1
+        },
+        {
+            "items": { "Starfury": 1, "Fallen Star": 10, "Sunplate Block": 50 },
+            "tiles": [ "Anvil" ],
+            "creates": 1
+        }
+    ]
+}

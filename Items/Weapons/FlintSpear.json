@@ -1,0 +1,29 @@
+﻿{
+    "displayName": "Flint Spear",
+    "texture": "Textures/Items/Weapons/FlintSpear",
+    "size": [ 32, 32 ],
+    "maxStack": 5,
+    "value": [ 0, 0, 1, 5 ],
+    "rare": 1,
+    "useStyle": 1,
+    "useAnimation": 40,
+    "useTime": 40,
+    "damage": 12,
+    "knockback": 4,
+    "useSound": 1,
+    "autoReuse": false,
+    "consumable": true,
+    "noMelee": true,
+    "ranged": true,
+    "shoot": "MysticalMagics:ProjFlintSpear",
+    "shootSpeed": 6,
+    "mana": 0,
+
+    "recipes": [
+        {
+            "items": { "Dirt Block": 1 },
+            "tiles": [ "Work Bench" ],
+            "creates": 1
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+﻿{
+    "displayName": "The Wall of Steel",
+    "size": [ 98, 86 ],
+    "texture": "Textures/NPCs/WallOfSteel",
+    "scale": 1,
+    "frameCount": 2,
+    "value": [ 0, 2, 0, 0 ],
+    "aiStyle": -1,
+    "lifeMax": 80000,
+    "boss": true,
+    "music": "Vanilla:13",
+    "noGravity": true,
+    "noTileCollide": true,
+    "soundHit": 8,
+    "soundKilled": 10,
+    "damage": 60,
+    "defense": 10,
+    "knockbackResist": 0,
+    "buffImmune": [ 24 ],
+    "npcSlots": 1
+}

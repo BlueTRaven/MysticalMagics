@@ -1,0 +1,34 @@
+﻿{
+    "displayName": "Mega Blaster",
+    "texture": "Textures/Items/Weapons/MegaBlaster",
+    "size": [ 45, 18 ],
+    "maxStack": 1,
+    "value": [ 0, 50, 15, 0 ],
+    "rare": 7,
+    "tooltip": "'A demonic combination of a megashark and tactical shotgun'",
+    "useStyle": 5,
+    "useAnimation": 10,
+    "useTime": 10,
+    "damage": 23,
+    "knockback": 1,
+    "useSound": 11,
+    "autoReuse": true,
+    "noMelee": true,
+    "ranged": true,
+    "shoot": 14,
+    "shootSpeed": 7,
+    "useAmmo": 14,
+
+    "recipes": [
+        {
+            "items": { "Dirt Block": 1 },
+            "tiles": [ "Work Bench" ],
+            "creates": 1
+        },
+        {
+            "items": { "Megashark": 1, "Tactical Shotgun": 1, "Beetle Husk": 20 },
+            "tiles": [ "Demon Altar" ],
+            "creates": 1
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+﻿{ 
+    "displayName": "Watch of Time",
+    "texture": "Textures/Items/TimeWatch",
+    "size": [ 32, 32 ],
+    "useStyle": 5,
+    "maxStack": 1,
+    "value": [ 0, 3, 0, 0 ],
+    "tooltip": "'Change the flow of time!'",
+    "useAnimation": 40,
+    "useTime": 40,
+    "useSound": 6,
+    //"mana": 60,
+    "mana": 0, //TODO: ACTUALLY USE MANA
+
+    "recipes": [
+        {
+            "items": { "Dirt Block": 1 },
+            "tiles": [ "Work Bench" ],
+            "creates": 1
+        }
+    ]
+}

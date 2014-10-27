@@ -1,0 +1,19 @@
+﻿{
+    "displayName": "Enchanted Demon Eye",
+    "size": [ 110, 114 ],
+    "texture": "Textures/NPCs/EnchantedDemonEye",
+    "scale": 0.5,
+    "frameCount": 6,
+    "value": [ 0, 2, 0, 0 ],
+    "aiStyle": -1,
+    "lifeMax": 3600,
+    "noGravity": true,
+    "noTileCollide": true,
+    "soundHit": 1,
+    "soundKilled": 1,
+    "damage": 65,
+    "defense": 22,
+    "knockbackResist": 0,
+    "buffImmune": [ 24 ],
+    "npcSlots": 1
+}

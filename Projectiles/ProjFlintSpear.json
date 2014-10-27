@@ -1,0 +1,15 @@
+﻿{ 
+    "displayName": "Tide",
+    "texture": "Textures/Projectiles/Player/ProjFlintSpear",
+	"size": [10, 32],
+	"aiStyle": 1,
+	"timeLeft": 1000,
+	"friendly": true,
+	"hostile": false,	
+	"tileCollide": true,
+	"damage": 12,
+    "magic": true,
+	"penetrate": 2,
+	"maxUpdates": 2
+}
+

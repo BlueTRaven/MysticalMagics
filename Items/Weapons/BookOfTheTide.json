@@ -1,0 +1,29 @@
+﻿{
+    "displayName": "Book of the Tide",
+    "texture": "Textures/Items/Weapons/BookofTheTide",
+    "size": [ 15, 50 ],
+    "maxStack": 1,
+    "value": [ 0, 1, 50, 0 ],
+    "rare": 2,
+    "tooltip": "'Release a wave of water!'",
+    "useStyle": 5,
+    "useAnimation": 12,
+    "useTime": 40,
+    "damage": 6,
+    "knockback": 4,
+    "useSound": 24,
+    "autoReuse": true,
+    "noMelee": true,
+    "magic": true,
+    "shoot": "MysticalMagics:ProjTide",
+    "shootSpeed": 1.2,
+    "mana": 0,
+
+    "recipes": [
+        {
+            "items": { "Dirt Block": 1 },
+            "tiles": [ "Work Bench" ],
+            "creates": 1
+        }
+    ]
+}

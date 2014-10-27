@@ -1,0 +1,28 @@
+﻿{
+    "displayName": "Wrath Scepter",
+    "texture": "Textures/Items/Weapons/WrathScepter",
+    "size": [ 15, 50 ],
+    "maxStack": 1,
+    "value": [ 0, 1, 50, 0 ],
+    "rare": 2,
+    "useStyle": 5,
+    "useAnimation": 12,
+    "useTime": 21,
+    "damage": 35,
+    "knockback": 5,
+    "useSound": 24,
+    "tileCollide": false,
+    "noMelee": true,
+    "magic": true,
+    "shoot": "MysticalMagics:HomingFireBall",
+    "shootSpeed": 1.2,
+    "mana": 0,
+
+    "recipes": [
+        {
+            "items": { "Dirt Block": 1 },
+            "tiles": [ "Work Bench" ],
+            "creates": 1
+        }
+    ]
+}

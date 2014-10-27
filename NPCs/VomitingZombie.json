@@ -1,0 +1,15 @@
+﻿{
+    "displayName": "Vomiting Zombie",
+    "texture": "Textures/NPCs/VomitingZombie",
+    "scale": 1,
+    "frameCount": 3,
+    "animationStyle": 55,
+    "aiStyle": -1,
+    "value": [ 0, 0, 1, 50 ],
+    "lifeMax": 200,
+    "damage": 16,
+    "defense": 6,
+    "knockbackResist": 5,
+    "soundHit": 1,
+    "soundKilled": 1
+}

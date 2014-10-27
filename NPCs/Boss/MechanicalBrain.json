@@ -1,0 +1,21 @@
+﻿{
+    "displayName": "Mechanical Brain of Cthulhu",
+    "size": [ 110, 200 ],
+    "texture": "Textures/NPCs/MechBoC",
+    "scale": 2,
+    "frameCount": 8,
+    "animationType": 266,
+    "value": [ 0, 2, 0, 0 ],
+    "aiStyle": -1,
+    "lifeMax": 23000,
+    "boss": true,
+    "noGravity": true,
+    "noTileCollide": true,
+    "soundHit": 8,
+    "soundKilled": 10,
+    "damage": 60,
+    "defense": 22,
+    "knockbackResist": 0.8,
+    "buffImmune": [ 24 ],
+    "npcSlots": 1
+}

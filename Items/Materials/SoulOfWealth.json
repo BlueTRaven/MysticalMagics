@@ -1,0 +1,18 @@
+﻿{
+    "displayName": "Soul Of Wealth",
+    "texture": "Textures/Items/SoulWealth",
+    "size": [ 32, 32 ],
+    "scale": 1,
+    "value": [ 0, 0, 40, 0 ],
+    "maxStack": 999,
+    "tooltip": "'The essence of one overcome by greed'",
+    "rare": 5,
+
+    "recipes": [
+        {
+            "items": { "Dirt Block": 1 },
+            "tiles": [ "Work Bench" ],
+            "creates": 50
+        }
+    ]
+}

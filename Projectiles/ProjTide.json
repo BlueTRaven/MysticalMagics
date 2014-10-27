@@ -1,0 +1,14 @@
+﻿{
+    "displayName": "Tide",
+    "texture": "Textures/Projectiles/Player/Tide",
+	"size": [10, 32],
+	"aiStyle": -1,
+	"timeLeft": 60,
+	"friendly": true,
+	"hostile": false,	
+	"tileCollide": true,
+	"damage": 20,
+    "magic": true,
+	"penetrate": 1,
+	"maxUpdates": 2
+}

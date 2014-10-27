@@ -1,0 +1,20 @@
+﻿{
+    "displayName": "MechBrainMinion",
+    "size": [ 110, 200 ],
+    "texture": "Textures/NPCs/BuzzSaw",
+    "scale": 1,
+    "frameCount": 1,
+    "animationType": -1,
+    "value": [ 0, 2, 0, 0 ],
+    "aiStyle": -5,
+    "lifeMax": 100,
+    "noGravity": true,
+    "noTileCollide": true,
+    "soundHit": 8,
+    "soundKilled": 10,
+    "damage": 60,
+    "defense": 22,
+    "knockbackResist": 0,
+    "buffImmune": [ 24 ],
+    "npcSlots": 1
+}

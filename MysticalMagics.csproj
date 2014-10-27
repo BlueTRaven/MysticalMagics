@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{86EFFED4-6678-4EF4-B12D-19F3D8BA8D6E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MysticalMagics</RootNamespace>
+    <AssemblyName>MysticalMagics</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Items\Debug\DebugGiveItems.json" />
+    <None Include="Items\Debug\DebugSummoningItem.json" />
+    <None Include="Items\Materials\Flint.json" />
+    <None Include="Items\Materials\SoulOfObservance.json" />
+    <None Include="Items\Materials\SoulOfWealth.json" />
+    <None Include="Items\TimeWatch.json" />
+    <None Include="Items\Weapons\FlintSpear.json" />
+    <None Include="Items\Weapons\MegaBlaster.json" />
+    <None Include="Items\Weapons\SpiralSpell.json" />
+    <None Include="Items\Weapons\StarSword.json" />
+    <None Include="Items\Weapons\VampireSword.json" />
+    <None Include="Items\Weapons\WrathScepter.json" />
+    <None Include="ModInfo.json" />
+    <None Include="NPCs\Boss\MechBrainMinion.json" />
+    <None Include="NPCs\Boss\RetWoS.json" />
+    <None Include="NPCs\Boss\SpazWoS.json" />
+    <None Include="NPCs\Boss\WallOfSteel.json" />
+    <None Include="NPCs\Boss\MechanicalBrain.json" />
+    <None Include="NPCs\DemonSlime.json" />
+    <None Include="NPCs\DemonSlime2.json" />
+    <None Include="NPCs\EnchantedDemonEye.json" />
+    <None Include="NPCs\FallenAngel.json" />
+    <None Include="NPCs\VomitingZombie.json" />
+    <None Include="Projectiles\HomingFireBall.json" />
+    <None Include="Projectiles\ProjFlintSpear.json" />
+    <None Include="Projectiles\ProjSpiral.json" />
+    <None Include="Projectiles\ProjTide.json" />
+    <None Include="Projectiles\SpiralMinion.json" />
+    <None Include="Tiles\Flint.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\SteamApps\common\Terraria\Microsoft.Xna.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\SteamApps\common\Terraria\Microsoft.Xna.Framework.Game.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\SteamApps\common\Terraria\Microsoft.Xna.Framework.Graphics.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Xact, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\SteamApps\common\Terraria\Microsoft.Xna.Framework.Xact.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="tAPI">
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\SteamApps\common\Terraria\tAPI.exe</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Items\Weapons\BookOfTheTide.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Textures\Items\Weapons\" />
+    <Folder Include="Textures\NPCs\" />
+    <Folder Include="Textures\Projectiles\Enemy\" />
+    <Folder Include="Textures\Projectiles\Player\" />
+    <Folder Include="Textures\Tiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Items\Materials\SoulOfWealth.cs" />
+    <Compile Include="Items\Materials\SoulOfObservance.cs" />
+    <Compile Include="Items\Weapons\BookOfTheTide.cs" />
+    <Compile Include="Items\Debug\DebugGiveItems.cs" />
+    <Compile Include="Items\Debug\DebugSummoningItem.cs" />
+    <Compile Include="Items\TimeWatch.cs" />
+    <Compile Include="Items\Weapons\MegaBlaster.cs" />
+    <Compile Include="Items\Weapons\VampireSword.cs" />
+    <Compile Include="Items\Weapons\WrathScepter.cs" />
+    <Compile Include="NPCs\Boss\MechanicalBrain.cs" />
+    <Compile Include="NPCs\Boss\RetWoS.cs" />
+    <Compile Include="NPCs\Boss\SpazWoS.cs" />
+    <Compile Include="NPCs\Boss\WallOfSteel.cs" />
+    <Compile Include="NPCs\DemonSlime.cs" />
+    <Compile Include="NPCs\EnchantedDemonEye.cs" />
+    <Compile Include="NPCs\FallenAngel.cs" />
+    <Compile Include="NPCs\VomitingZombie.cs" />
+    <Compile Include="Projectiles\HomingFireBall.cs" />
+    <Compile Include="Projectiles\ProjSpearFlint.cs" />
+    <Compile Include="Projectiles\ProjSpiral.cs" />
+    <Compile Include="Projectiles\ProjTide.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

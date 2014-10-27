@@ -1,0 +1,29 @@
+﻿{
+    "displayName": "Spiral Spell",
+    "texture": "Textures/Items/Weapons/SpiralSpell",
+    "size": [ 15, 50 ],
+    "maxStack": 1,
+    "value": [ 0, 1, 50, 0 ],
+    "rare": 2,
+    "tooltip": "'Shoot A fantastic display of colors and lights!'",
+    "useStyle": 5,
+    "useAnimation": 60,
+    "useTime": 60,
+    "damage": 6,
+    "knockback": 4,
+    "useSound": 24,
+    "autoReuse": false,
+    "noMelee": true,
+    "magic": true,
+    "shoot": "MysticalMagics:ProjSpiral",
+    "shootSpeed": 1.2,
+    "mana": 0,
+
+    "recipes": [
+        {
+            "items": { "Dirt Block": 1 },
+            "tiles": [ "Work Bench" ],
+            "creates": 1
+        }
+    ]
+}
