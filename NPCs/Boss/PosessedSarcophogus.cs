@@ -13,64 +13,153 @@ namespace MysticalMagics.NPCs
     public class PosessedSarcophogus : ModNPC
     {
         int speed;
+        int maxSpeed = 2;
+        int lazerFrequency = 1;
+        bool halfHP;
 
         public override void AI()
         {
             npc.TargetClosest(true);
             Player target = Main.player[npc.target]; //shorter, easier way to get the player the npc is targeting
-            npc.ai[0]++;
-            npc.ai[2]++;
-            if (npc.ai[2] >= 60) npc.ai[2] = 0;
 
-            if (npc.ai[0] < 600)
-            {   //run phase one
-                PhaseOne(target);
+            if (npc.life < npc.lifeMax / 2)
+            {
+
+                int dust = Dust.NewDust(npc.Hitbox, 6, new Vector2(Main.rand.Next(-4, 4), Main.rand.Next(-4, 4)), 0, Color.White, Main.rand.Next(2));
+                Lighting.AddLight(Main.dust[dust].position, Color.SteelBlue);
+                maxSpeed = 8;
+
+                Lighting.AddLight(npc.Center, Color.DarkOrange);
+                halfHP = true;
+
+                npc.ai[0]++;
+                if (npc.ai[0] < 600)    //Ai loop
+                    PhaseTwo(target);
+                else if (npc.ai[0] >= 600 && npc.ai[0] < 900)
+                    PhaseOne(target);
+                else
+                    npc.ai[0] = 0;
+
+                lazerFrequency = 45;
             }
-            else if (npc.ai[0] >= 600 && npc.ai[0] < 900)
-                PhaseOne(target);   //run phase two
             else
-                npc.ai[0] = 0;  //reset the counter
-            //runs phase one for 10 seconds, then phase two for 5.
+            {
+                PhaseOne(target);
+                int dust = Dust.NewDust(npc.Hitbox, 76, new Vector2(Main.rand.Next(-4, 4), Main.rand.Next(-4, 4)), 0, Color.LightGoldenrodYellow, Main.rand.Next(2));
+                Lighting.AddLight(Main.dust[dust].position, Color.LightGoldenrodYellow);
 
-            Lighting.AddLight(npc.Center, Color.LightYellow);   //make it give off light
+                Lighting.AddLight(npc.Center, Color.Orange);
+
+            }
         }
 
         public void PhaseOne(Player target)
         {
-            if ((npc.Center - new Vector2(target.Center.X, target.Center.Y)).Length() > 130)
+            bool directionX = (npc.position.X - target.position.X) > 0;
+            bool directionY = (npc.position.Y - target.position.Y + 200) > 0;
+
+            if (directionX)
             {
-                if (npc.ai[2] == 59)
-                {
-                    if (speed < 12)
-                        speed++;
-                    else speed = 12;
+                npc.velocity.X -= 0.1f;
 
-                    Main.NewText("" + speed);
-                }
+                if (npc.velocity.X < -maxSpeed)
+                    npc.velocity.X = -maxSpeed;
             }
-            else if ((npc.Center - new Vector2(target.Center.X, target.Center.Y)).Length() < 130) speed = 0;
-                
-            Vector2 missle = target.Center - new Vector2(npc.Center.X, npc.Center.Y + 200);
-            missle.Normalize();
 
-            if (missle == Vector2.Zero) missle = -Vector2.UnitY;    //some complicated code to make it home in on the player
-            npc.velocity = speed * missle;
+            if (!directionX)
+            {
+                npc.velocity.X += 0.1f;
+
+                if (npc.velocity.X > maxSpeed)
+                    npc.velocity.X = maxSpeed;
+            }
+
+            if (directionY)
+            {
+                npc.velocity.Y -= 0.3f;
+
+                if (npc.velocity.Y < -maxSpeed)
+                    npc.velocity.Y = -maxSpeed;
+            }
+
+            if (!directionY)
+            {
+                npc.velocity.Y += 0.3f;
+
+                if (npc.velocity.Y > maxSpeed)
+                    npc.velocity.Y = maxSpeed;
+            }
+
+            if (npc.Center.X == target.Center.X)
+                npc.velocity.X = 0;
+
+            if (npc.Center.Y == target.Center.Y)
+                npc.velocity.Y = 0;
+
+            npc.ai[2]++;
+
+            float rot = (float)Math.Atan2(npc.Centre.Y - target.Centre.Y, npc.Centre.X - target.Centre.X);
+
+            if (npc.ai[2] > 120 - lazerFrequency * 2)
+            {
+                int proj = Projectile.NewProjectile(npc.Center, new Vector2((float)Math.Cos(rot) * -20f, (float)Math.Sin(rot) * -20f), "Eye Laser", 60, 1.2f, Main.myPlayer);
+                Main.projectile[proj].hostile = true;
+                Main.projectile[proj].friendly = false;
+                
+                npc.ai[2] = 0;
+            }
+
+            if (Main.rand.Next(100) == 7)
+            {
+                int proj = Projectile.NewProjectile(npc.Center, new Vector2(0, 2), "Sand Ball", 12, 1.2f, Main.myPlayer);
+                Main.projectile[proj].hostile = true;
+                Main.projectile[proj].friendly = false;
+            }
+            npc.ai[1] = 0;
+            npc.alpha = 0;
         }
 
         public void PhaseTwo(Player target)
         {
-            npc.ai[1]++;    //increase another counter
+            float rot = (float)Math.Atan2(npc.Centre.Y - target.Centre.Y, npc.Centre.X - target.Centre.X);
 
-            if(npc.ai[1] >= 200 && npc.ai[1] < 260)
-            {   //increase the alpha - make it phade out
-                npc.alpha++;
-            }
-            if (npc.ai[1] >= 260 && npc.ai[1] < 265)
+            npc.velocity.X *= 0.98f;
+            npc.velocity.Y *= 0.98f;
+
+            npc.ai[1]++;
+
+            if (npc.ai[1] <= 120)
+                npc.alpha += 2;
+
+            if (npc.ai[1] > 120)
             {
-                npc.alpha = 0;  //reset the alpha
-                npc.position = new Vector2(target.Center.X, target.Center.Y + 200); //Teleport to a posisition above the player
+                npc.position = new Vector2(target.Center.X + Main.rand.Next(-100, 100), target.Center.Y + Main.rand.Next(-100, 100));
+
+                for (int i = 0; i < 6; i++)
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X + Main.rand.Next(-4, 4), npc.velocity.Y + Main.rand.Next(-4, 4), 293, 20, 0, 0, 1.1f, Main.myPlayer);
+
+                Main.PlaySound(2, (int) npc.Center.X, (int) npc.position.Y, 8);
+
+                npc.velocity.X = (float)Math.Cos(rot) * -2f;
+                npc.velocity.Y = (float)Math.Sin(rot) * -2f;
+
+                if (lazerFrequency > 15)
+                    lazerFrequency = 15;
+
+                npc.alpha = 0;
+
+                npc.ai[1] = 0;
             }
-            else npc.ai[1] = 0; //reset the counter
+
+            if (npc.ai[2] > 120 - lazerFrequency)
+            {
+                int proj = Projectile.NewProjectile(npc.Center, new Vector2((float)Math.Cos(rot) * -20f, (float)Math.Sin(rot) * -20f), "Eye Laser", 60, 1.2f, Main.myPlayer);
+                Main.projectile[proj].hostile = true;
+                Main.projectile[proj].friendly = false;
+                Main.projectile[proj].tileCollide = false;
+
+                npc.ai[2] = 0;
+            }
         }
     }
 }
