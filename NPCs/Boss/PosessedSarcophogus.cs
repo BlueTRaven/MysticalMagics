@@ -15,22 +15,34 @@ namespace MysticalMagics.NPCs
         int speed;
         int maxSpeed = 2;
         int lazerFrequency = 1;
-        bool halfHP;
+        bool isDeadOnce;
+
+        public override void HitEffect(int hitDirection, double damage, bool isDead)
+        {
+            if (isDead && !isDeadOnce)
+            {
+                npc.life = npc.lifeMax;
+                npc.defense /= 2;
+                npc.active = true;
+                isDeadOnce = true;
+
+                for (int i = 0; i < 13; i++)
+                    Projectile.NewProjectile(npc.Center, new Vector2(Main.rand.Next(-4,4), Main.rand.Next(-4,4)), "Eye Laser", 60, 1.2f, Main.myPlayer);
+            }
+        }
 
         public override void AI()
         {
             npc.TargetClosest(true);
             Player target = Main.player[npc.target]; //shorter, easier way to get the player the npc is targeting
 
-            if (npc.life < npc.lifeMax / 2)
+            if (isDeadOnce)
             {
-
                 int dust = Dust.NewDust(npc.Hitbox, 6, new Vector2(Main.rand.Next(-4, 4), Main.rand.Next(-4, 4)), 0, Color.White, Main.rand.Next(2));
                 Lighting.AddLight(Main.dust[dust].position, Color.SteelBlue);
                 maxSpeed = 8;
 
                 Lighting.AddLight(npc.Center, Color.DarkOrange);
-                halfHP = true;
 
                 npc.ai[0]++;
                 if (npc.ai[0] < 600)    //Ai loop
@@ -90,12 +102,6 @@ namespace MysticalMagics.NPCs
                     npc.velocity.Y = maxSpeed;
             }
 
-            if (npc.Center.X == target.Center.X)
-                npc.velocity.X = 0;
-
-            if (npc.Center.Y == target.Center.Y)
-                npc.velocity.Y = 0;
-
             npc.ai[2]++;
 
             float rot = (float)Math.Atan2(npc.Centre.Y - target.Centre.Y, npc.Centre.X - target.Centre.X);
@@ -135,8 +141,11 @@ namespace MysticalMagics.NPCs
             {
                 npc.position = new Vector2(target.Center.X + Main.rand.Next(-100, 100), target.Center.Y + Main.rand.Next(-100, 100));
 
-                for (int i = 0; i < 6; i++)
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X + Main.rand.Next(-4, 4), npc.velocity.Y + Main.rand.Next(-4, 4), 293, 20, 0, 0, 1.1f, Main.myPlayer);
+                for (int i = 0; i < 4; i++)
+                {
+                    int proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X + Main.rand.Next(-4, 4), npc.velocity.Y + Main.rand.Next(-4, 4), 293, 20, 0, 0, 1.1f, Main.myPlayer);
+                    Main.projectile[proj].timeLeft = 600;
+                }
 
                 Main.PlaySound(2, (int) npc.Center.X, (int) npc.position.Y, 8);
 
