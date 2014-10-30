@@ -17,6 +17,10 @@ namespace MysticalMagics.NPCs
         int lazerFrequency = 1;
         bool isDeadOnce;
 
+        int flagCount = 0, flagCount2 = 0;
+        bool flag;
+        Vector2 origPos;
+
         public override void HitEffect(int hitDirection, double damage, bool isDead)
         {
             if (isDead && !isDeadOnce)
@@ -25,9 +29,7 @@ namespace MysticalMagics.NPCs
                 npc.defense /= 2;
                 npc.active = true;
                 isDeadOnce = true;
-
-                for (int i = 0; i < 13; i++)
-                    Projectile.NewProjectile(npc.Center, new Vector2(Main.rand.Next(-4,4), Main.rand.Next(-4,4)), "Eye Laser", 60, 1.2f, Main.myPlayer);
+                origPos = npc.position;
             }
         }
 
@@ -36,8 +38,36 @@ namespace MysticalMagics.NPCs
             npc.TargetClosest(true);
             Player target = Main.player[npc.target]; //shorter, easier way to get the player the npc is targeting
 
-            if (isDeadOnce)
+            if (!flag && isDeadOnce)
             {
+                npc.dontTakeDamage = true;
+
+                flagCount++;
+
+                if (flagCount < 240)
+                {
+                    flagCount2++;
+                    if (flagCount2 > 30)
+                    {
+                        npc.position = new Vector2(origPos.X + Main.rand.Next(-200, 200), origPos.Y + Main.rand.Next(-200, 200));
+                        for (int i = 0; i < 20; i++)
+                            Dust.NewDust(npc.Hitbox, 6, new Vector2(Main.rand.Next(-16, 16), Main.rand.Next(-16, 16)), 0, Color.White, Main.rand.Next(2));
+                        flagCount2 = 0;
+                    }
+                }
+                if (flagCount >= 240 && flagCount < 300)
+                    npc.position = origPos;
+                else if (flagCount >= 300)
+                {
+                    flag = true;
+                    flagCount = 0;
+                }
+            }
+
+            if (flag)
+            {
+                npc.dontTakeDamage = false;
+
                 int dust = Dust.NewDust(npc.Hitbox, 6, new Vector2(Main.rand.Next(-4, 4), Main.rand.Next(-4, 4)), 0, Color.White, Main.rand.Next(2));
                 Lighting.AddLight(Main.dust[dust].position, Color.SteelBlue);
                 maxSpeed = 8;
@@ -139,11 +169,11 @@ namespace MysticalMagics.NPCs
 
             if (npc.ai[1] > 120)
             {
-                npc.position = new Vector2(target.Center.X + Main.rand.Next(-100, 100), target.Center.Y + Main.rand.Next(-100, 100));
+                npc.position = new Vector2(target.Center.X + Main.rand.Next(-200, 200), target.Center.Y + Main.rand.Next(-200, 200));
 
                 for (int i = 0; i < 4; i++)
                 {
-                    int proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X + Main.rand.Next(-4, 4), npc.velocity.Y + Main.rand.Next(-4, 4), 293, 20, 0, 0, 1.1f, Main.myPlayer);
+                    int proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X + Main.rand.Next(-4, 4), npc.velocity.Y + Main.rand.Next(-4, 4), 293, 40, 0, 0, 1.1f, Main.myPlayer);
                     Main.projectile[proj].timeLeft = 600;
                 }
 
@@ -169,6 +199,11 @@ namespace MysticalMagics.NPCs
 
                 npc.ai[2] = 0;
             }
+        }
+
+        public void Dead()
+        {
+
         }
     }
 }

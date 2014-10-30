@@ -1,14 +1,14 @@
 ﻿{
-    "displayName": "Mega Blaster",
-    "texture": "Textures/Items/Weapons/MegaBlaster",
-    "size": [ 45, 18 ],
+    "displayName": "Chlorophyte Mega Blaster",
+    "texture": "Textures/Items/Weapons/ChlorophyteMegaBlaster",
+    "size": [ 90, 30 ],
     "maxStack": 1,
     "value": [ 0, 50, 15, 0 ],
-    "rare": 7,
+    "rare": 8,
     "tooltip": "'A demonic combination of a megashark and tactical shotgun'",
     "useStyle": 5,
-    "useAnimation": 10,
-    "useTime": 10,
+    "useAnimation": 13,
+    "useTime": 13,
     "damage": 23,
     "knockback": 1,
     "useSound": 11,
@@ -26,7 +26,7 @@
             "creates": 1
         },
         {
-            "items": { "Megashark": 1, "Tactical Shotgun": 1, "Beetle Husk": 20 },
+            "items": { "Megashark": 1, "Tactical Shotgun": 1, "Beetle Husk": 20, "Chlorophyte Bar": 30 },
             "tiles": [ "Demon Altar" ],
             "creates": 1
         }
