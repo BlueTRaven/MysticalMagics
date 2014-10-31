@@ -6,7 +6,7 @@
     "frameCount": 1,
     "value": [ 0, 2, 0, 0 ],
     "aiStyle": -1,
-    "lifeMax": 2600,
+    "lifeMax": 2600,    //TODO: fix life (add a 0)
     "boss": true,
     "noGravity": true,
     "noTileCollide": true,

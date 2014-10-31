@@ -14,7 +14,7 @@
     "tileCollide": false,
     "noMelee": true,
     "magic": true,
-    "shoot": "MysticalMagics:HomingFireBall",
+    "shoot": 187,//"MysticalMagics:HomingFireBall",
     "shootSpeed": 1.2,
     "mana": 0,
 

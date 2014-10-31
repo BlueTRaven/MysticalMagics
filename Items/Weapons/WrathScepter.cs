@@ -15,7 +15,7 @@ namespace MysticalMagics.Items
         int proj;
         int ai;
 
-        public override bool PreShoot(Player player, Vector2 position, Vector2 velocity, int projType, int damage, float knockback)
+        /*public override bool PreShoot(Player player, Vector2 position, Vector2 velocity, int projType, int damage, float knockback)
         {
             proj = Projectile.NewProjectile(player.Center, new Vector2(velocity.X, velocity.Y),
                                 "MysticalMagics:HomingFireBall", (int)(50f * player.magicDamage), 1.1f, player.whoAmI);
@@ -31,6 +31,6 @@ namespace MysticalMagics.Items
                 }
             }
             return true;
-        }
+        }*/
     }
 }

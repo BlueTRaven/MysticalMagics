@@ -14,14 +14,12 @@ namespace MysticalMagics
 
     class MNpc : ModNPC
     {
-        public bool text = false;
-
         public override void PostNPCLoot()
         {
-            if ((npc.type == 126 || npc.type == 125 || npc.type == 127 || (npc.type == 134 || npc.type == 135 || npc.type == 136)) && !text && !NPC.downedMechBossAny)
+            if ((npc.type == NPCDef.byName["MysticalMagics:PosessedSarcophogus"].type) && !MWorld.SarcophogusBeaten)
             {
-                text = NPC.downedMechBossAny;
                 Main.NewText("Three enchanted spirits have been released...", Color.Turquoise);
+                MWorld.SarcophogusBeaten = true;
             }
         }
     }

@@ -26,9 +26,9 @@ namespace MysticalMagics.NPCs
             Player target = Main.player[npc.target]; //shorter, easier way to get the player the npc is targeting
 
             npc.ai[0]++;
-            
+
             if (!stopFacingPlayer)
-                npc.rotation = (target.Center - npc.Center).ToRotation() + -MathHelper.PiOver2;  //look at the player at all times
+                npc.rotation = Helper.GetRotation(target, npc, 0);  //look at the player at all times
             if (!target.dead && !Main.dayTime)
             {
                 if (npc.life < npc.lifeMax / 2) //if at half hp
@@ -77,8 +77,7 @@ namespace MysticalMagics.NPCs
                             {
                                 float rot = (float)Math.Atan2(npc.Centre.Y - target.Centre.Y, npc.Centre.X - target.Centre.X);
 
-                                npc.velocity.X = (float)Math.Cos(rot) * -20f;
-                                npc.velocity.Y = (float)Math.Sin(rot) * -20f;
+                                Helper.ChargeTarget(target, npc, 20f);
                             }
                             
                             npc.ai[0] = 0;
@@ -128,8 +127,8 @@ namespace MysticalMagics.NPCs
                         npc.velocity = 12 * missle;
                     }
                 }
-                    canCharge = false;
                 
+                canCharge = false;
             }
         }
 
@@ -141,7 +140,7 @@ namespace MysticalMagics.NPCs
 
         public override bool CanSpawn(int x, int y, int type, Player spawnedOn)
         {
-            if (Main.hardMode && (spawnedOn.zoneEvil || spawnedOn.zoneBlood) && !Main.dayTime && spawnedOn.zone["Surface"] && modnpc.text)
+            if (Main.hardMode && (spawnedOn.zoneEvil || spawnedOn.zoneBlood) && !Main.dayTime && spawnedOn.zone["Surface"] && MWorld.SarcophogusBeaten)
             {   //only spawn in hardmode, in the crimson/corruption, when it's nighttime and the player is on the surface.
                 return Main.rand.Next(20) == 1;
             }
@@ -149,7 +148,7 @@ namespace MysticalMagics.NPCs
         }
 
         public override void SelectFrame(int frameSize)
-        {
+        {   //complicated stuff for moving frames n stuff
             npc.frameCounter++;
 
             if (isHalfHP)
@@ -175,7 +174,7 @@ namespace MysticalMagics.NPCs
         }
 
         public override void NPCLoot()
-        {
+        {   //drop teh l00tz
             Item.NewItem(npc.Center, npc.Size, ItemDef.byName["MysticalMagics:SoulOfObservance"].type, Main.rand.Next(12), false, 0, false);
         }
     }

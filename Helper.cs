@@ -15,13 +15,20 @@ namespace MysticalMagics
     {
         /*
          *  Gets the rotation to its target.
+         *  @Param pos: 4 possible ints
          */
-        public static float GetRotation(Player target, NPC npc, bool pos)
+        public static float GetRotation(Player target, NPC npc, int pos)
         {
-            if (pos)
+            if (pos == 0)
                 return (target.Center - npc.Center).ToRotation() + -MathHelper.PiOver2;
-            else
+            else if (pos == 1)
                 return (target.Center - npc.Center).ToRotation() + MathHelper.PiOver2;
+            else if (pos == 2)
+                return (target.Center - npc.Center).ToRotation() + ((float)-Math.PI);
+            else if (pos == 3)
+                return (target.Center - npc.Center).ToRotation() + ((float)Math.PI);
+            
+            else return (target.Center - npc.Center).ToRotation() + -MathHelper.PiOver2;
         }
 
         public static double GetCosSin(float rot, bool cosSin)
@@ -39,7 +46,7 @@ namespace MysticalMagics
          */
         public static void ChargeTarget(Player target, NPC npc, float speed)
         {
-            float rot = GetRotation(target, npc, true);
+            float rot = GetRotation(target, npc, 0);
 
             npc.velocity.X = (float)Math.Cos(rot) * -speed;
             npc.velocity.Y = (float)Math.Sin(rot) * -speed;

@@ -30,6 +30,9 @@ namespace MysticalMagics.NPCs
                 npc.active = true;
                 isDeadOnce = true;
                 origPos = npc.position;
+
+                    //freaking love dust
+                for (int i = 0; i < 60; i++) Dust.NewDust(npc.Hitbox, 6, new Vector2(Main.rand.Next(-16, 16), Main.rand.Next(-16, 16)), 0, Color.White, Main.rand.Next(2));
             }
         }
 
@@ -51,7 +54,7 @@ namespace MysticalMagics.NPCs
                     {
                         npc.position = new Vector2(origPos.X + Main.rand.Next(-200, 200), origPos.Y + Main.rand.Next(-200, 200));
                         for (int i = 0; i < 20; i++)
-                            Dust.NewDust(npc.Hitbox, 6, new Vector2(Main.rand.Next(-16, 16), Main.rand.Next(-16, 16)), 0, Color.White, Main.rand.Next(2));
+                            Dust.NewDust(npc.Hitbox, 6, new Vector2(Main.rand.Next(-16, 16), Main.rand.Next(-16, 16)), 0, Color.White, Main.rand.Next(2));  //needs more dust
                         flagCount2 = 0;
                     }
                 }
@@ -68,7 +71,7 @@ namespace MysticalMagics.NPCs
             {
                 npc.dontTakeDamage = false;
 
-                int dust = Dust.NewDust(npc.Hitbox, 6, new Vector2(Main.rand.Next(-4, 4), Main.rand.Next(-4, 4)), 0, Color.White, Main.rand.Next(2));
+                int dust = Dust.NewDust(npc.Hitbox, 6, new Vector2(Main.rand.Next(-4, 4), Main.rand.Next(-4, 4)), 0, Color.White, Main.rand.Next(2));   //aogagifghufghaoh
                 Lighting.AddLight(Main.dust[dust].position, Color.SteelBlue);
                 maxSpeed = 8;
 
@@ -87,7 +90,7 @@ namespace MysticalMagics.NPCs
             else
             {
                 PhaseOne(target);
-                int dust = Dust.NewDust(npc.Hitbox, 76, new Vector2(Main.rand.Next(-4, 4), Main.rand.Next(-4, 4)), 0, Color.LightGoldenrodYellow, Main.rand.Next(2));
+                int dust = Dust.NewDust(npc.Hitbox, 76, new Vector2(Main.rand.Next(-4, 4), Main.rand.Next(-4, 4)), 0, Color.LightGoldenrodYellow, Main.rand.Next(2));   //mmmmmmmmmmmmm...
                 Lighting.AddLight(Main.dust[dust].position, Color.LightGoldenrodYellow);
 
                 Lighting.AddLight(npc.Center, Color.Orange);
@@ -134,11 +137,11 @@ namespace MysticalMagics.NPCs
 
             npc.ai[2]++;
 
-            float rot = (float)Math.Atan2(npc.Centre.Y - target.Centre.Y, npc.Centre.X - target.Centre.X);
+            float rot = Helper.GetRotation(target, npc, 2);
 
             if (npc.ai[2] > 120 - lazerFrequency * 2)
             {
-                int proj = Projectile.NewProjectile(npc.Center, new Vector2((float)Math.Cos(rot) * -20f, (float)Math.Sin(rot) * -20f), "Eye Laser", 60, 1.2f, Main.myPlayer);
+                int proj = Projectile.NewProjectile(npc.Center, new Vector2((float) Helper.GetCosSin(rot, true) * -20f, (float) Helper.GetCosSin(rot, false) * -20f/*(float)Math.Cos(rot) * -20f, (float)Math.Sin(rot) * -20f*/), "Eye Laser", 60, 1.2f, Main.myPlayer);
                 Main.projectile[proj].hostile = true;
                 Main.projectile[proj].friendly = false;
                 
@@ -159,8 +162,7 @@ namespace MysticalMagics.NPCs
         {
             float rot = (float)Math.Atan2(npc.Centre.Y - target.Centre.Y, npc.Centre.X - target.Centre.X);
 
-            npc.velocity.X *= 0.98f;
-            npc.velocity.Y *= 0.98f;
+            Helper.SlowDown(npc);
 
             npc.ai[1]++;
 
@@ -178,9 +180,8 @@ namespace MysticalMagics.NPCs
                 }
 
                 Main.PlaySound(2, (int) npc.Center.X, (int) npc.position.Y, 8);
-
-                npc.velocity.X = (float)Math.Cos(rot) * -2f;
-                npc.velocity.Y = (float)Math.Sin(rot) * -2f;
+                
+                Helper.ChargeTarget(target, npc, 2f);
 
                 if (lazerFrequency > 15)
                     lazerFrequency = 15;
@@ -199,11 +200,6 @@ namespace MysticalMagics.NPCs
 
                 npc.ai[2] = 0;
             }
-        }
-
-        public void Dead()
-        {
-
         }
     }
 }

@@ -14,11 +14,13 @@ namespace MysticalMagics.Items
     {
         public override bool? UseItem(Player player)
         {
-            if (Main.dayTime)
+            /*if (Main.dayTime)
                 Main.dayTime = false;
             else Main.dayTime = true;
 
-            Main.NewText("It is now " + (Main.dayTime ? "Day" : "Night"));
+            Main.NewText("It is now " + (Main.dayTime ? "Day" : "Night"));*/
+
+            MWorld.SarcophogusBeaten = false; //TODO: remove - reason: Debug
 
             return true;
         }
