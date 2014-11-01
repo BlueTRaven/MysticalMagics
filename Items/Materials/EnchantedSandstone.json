@@ -1,6 +1,6 @@
 ﻿{
     "displayName": "Enchanted Sandstone",
-    "texture": "Textures/Items/EnchSandstone",
+    "texture": "Textures/Items/Materials/EnchSandstone",
     "size": [ 32, 32 ],
     "scale": 1,
     "value": [ 0, 0, 20, 5 ],

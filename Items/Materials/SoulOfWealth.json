@@ -1,6 +1,6 @@
 ﻿{
     "displayName": "Soul Of Wealth",
-    "texture": "Textures/Items/SoulWealth",
+    "texture": "Textures/Items/Materials/SoulWealth",
     "size": [ 32, 32 ],
     "scale": 1,
     "value": [ 0, 0, 40, 0 ],

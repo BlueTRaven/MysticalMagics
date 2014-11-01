@@ -1,6 +1,6 @@
 ﻿{
     "displayName": "Flint",
-    "texture": "Textures/Items/Flint",
+    "texture": "Textures/Items/Materials/Flint",
     "size": [ 32, 32 ],
     "scale": 1,
     "value": [ 0, 0, 0, 30 ],

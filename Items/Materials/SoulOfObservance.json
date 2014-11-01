@@ -1,6 +1,6 @@
 ﻿{
     "displayName": "Soul Of Observance",
-    "texture": "Textures/Items/SoulObservance",
+    "texture": "Textures/Items/Materials/SoulObservance",
     "size": [ 32, 32 ],
     "scale": 1,
     "value": [ 0, 0, 40, 0 ],
