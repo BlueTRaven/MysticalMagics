@@ -16,6 +16,8 @@ namespace MysticalMagics
         /*
          *  Gets the rotation to its target.
          *  @Param pos: 4 possible ints
+         *  use 0 when charging a target
+         *  using 2 when shooting a projectile at the player
          */
         public static float GetRotation(Player target, NPC npc, int pos)
         {
@@ -77,10 +79,16 @@ namespace MysticalMagics
         /*
          *  Slows down the npc.
          */
-        public static void SlowDown(NPC npc)
+        public static void SlowDown(NPC npc, float speed = 0.98f)
         {
-            npc.velocity.X *= 0.98f;
-            npc.velocity.Y *= 0.98f;
+            npc.velocity.X *= speed;
+            npc.velocity.Y *= speed;
+        }
+
+        public static void SlowDown(Projectile proj, float speed = 0.98f)
+        {
+            proj.velocity.X *= speed;
+            proj.velocity.Y *= speed;
         }
 
         /*

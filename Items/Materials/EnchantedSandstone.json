@@ -1,0 +1,8 @@
+﻿{
+    "displayName": "Enchanted Sandstone",
+    "texture": "Textures/Items/EnchSandstone",
+    "size": [ 32, 32 ],
+    "scale": 1,
+    "value": [ 0, 0, 20, 5 ],
+    "maxStack": 99
+}

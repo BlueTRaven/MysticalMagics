@@ -41,15 +41,17 @@
     <None Include="Items\TimeWatch.json" />
     <None Include="Items\Weapons\FlintSpear.json" />
     <None Include="Items\Weapons\MegaBlaster.json" />
+    <None Include="Items\Weapons\Sandstorm.json" />
     <None Include="Items\Weapons\SpiralSpell.json" />
     <None Include="Items\Weapons\StarSword.json" />
     <None Include="Items\Weapons\VampireSword.json" />
     <None Include="Items\Weapons\WrathScepter.json" />
     <None Include="ModInfo.json" />
     <None Include="NPCs\Boss\MechBrainMinion.json" />
-    <None Include="NPCs\Boss\RetWoS.json" />
-    <None Include="NPCs\Boss\SpazWoS.json" />
-    <None Include="NPCs\Boss\WallOfSteel.json" />
+    <None Include="NPCs\Boss\PosessedSarcophogus.json" />
+    <None Include="NPCs\Boss\Unused\RetWoS.json" />
+    <None Include="NPCs\Boss\Unused\SpazWoS.json" />
+    <None Include="NPCs\Boss\Unused\WallOfSteel.json" />
     <None Include="NPCs\Boss\MechanicalBrain.json" />
     <None Include="NPCs\DemonSlime.json" />
     <None Include="NPCs\DemonSlime2.json" />
@@ -58,6 +60,7 @@
     <None Include="NPCs\VomitingZombie.json" />
     <None Include="Projectiles\HomingFireBall.json" />
     <None Include="Projectiles\ProjFlintSpear.json" />
+    <None Include="Projectiles\ProjSandStorm.json" />
     <None Include="Projectiles\ProjSpiral.json" />
     <None Include="Projectiles\ProjTide.json" />
     <None Include="Projectiles\SpiralMinion.json" />
@@ -96,6 +99,7 @@
     <Folder Include="Textures\Tiles\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper.cs" />
     <Compile Include="Items\Materials\SoulOfWealth.cs" />
     <Compile Include="Items\Materials\SoulOfObservance.cs" />
     <Compile Include="Items\Weapons\BookOfTheTide.cs" />
@@ -105,15 +109,19 @@
     <Compile Include="Items\Weapons\MegaBlaster.cs" />
     <Compile Include="Items\Weapons\VampireSword.cs" />
     <Compile Include="Items\Weapons\WrathScepter.cs" />
+    <Compile Include="MNpc.cs" />
+    <Compile Include="MWorld.cs" />
     <Compile Include="NPCs\Boss\MechanicalBrain.cs" />
-    <Compile Include="NPCs\Boss\RetWoS.cs" />
-    <Compile Include="NPCs\Boss\SpazWoS.cs" />
-    <Compile Include="NPCs\Boss\WallOfSteel.cs" />
+    <Compile Include="NPCs\Boss\PosessedSarcophogus.cs" />
+    <Compile Include="NPCs\Boss\Unused\RetWoS.cs" />
+    <Compile Include="NPCs\Boss\Unused\SpazWoS.cs" />
+    <Compile Include="NPCs\Boss\Unused\WallOfSteel.cs" />
     <Compile Include="NPCs\DemonSlime.cs" />
     <Compile Include="NPCs\EnchantedDemonEye.cs" />
     <Compile Include="NPCs\FallenAngel.cs" />
     <Compile Include="NPCs\VomitingZombie.cs" />
     <Compile Include="Projectiles\HomingFireBall.cs" />
+    <Compile Include="Projectiles\ProjSandStorm.cs" />
     <Compile Include="Projectiles\ProjSpearFlint.cs" />
     <Compile Include="Projectiles\ProjSpiral.cs" />
     <Compile Include="Projectiles\ProjTide.cs" />

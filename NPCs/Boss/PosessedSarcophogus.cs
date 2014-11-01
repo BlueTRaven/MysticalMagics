@@ -103,37 +103,42 @@ namespace MysticalMagics.NPCs
             bool directionX = (npc.position.X - target.position.X) > 0;
             bool directionY = (npc.position.Y - target.position.Y + 200) > 0;
 
-            if (directionX)
+            if ((npc.Center - target.Center).Length() > 50)
             {
-                npc.velocity.X -= 0.1f;
+                if (directionX)
+                {
+                    npc.velocity.X -= 0.1f;
 
-                if (npc.velocity.X < -maxSpeed)
-                    npc.velocity.X = -maxSpeed;
+                    if (npc.velocity.X < -maxSpeed)
+                        npc.velocity.X = -maxSpeed;
+                }
+
+                if (!directionX)
+                {
+                    npc.velocity.X += 0.1f;
+
+                    if (npc.velocity.X > maxSpeed)
+                        npc.velocity.X = maxSpeed;
+                }
+
+                if (directionY)
+                {
+                    npc.velocity.Y -= 0.3f;
+
+                    if (npc.velocity.Y < -maxSpeed)
+                        npc.velocity.Y = -maxSpeed;
+                }
+
+                if (!directionY)
+                {
+                    npc.velocity.Y += 0.3f;
+
+                    if (npc.velocity.Y > maxSpeed)
+                        npc.velocity.Y = maxSpeed;
+                }
             }
-
-            if (!directionX)
-            {
-                npc.velocity.X += 0.1f;
-
-                if (npc.velocity.X > maxSpeed)
-                    npc.velocity.X = maxSpeed;
-            }
-
-            if (directionY)
-            {
-                npc.velocity.Y -= 0.3f;
-
-                if (npc.velocity.Y < -maxSpeed)
-                    npc.velocity.Y = -maxSpeed;
-            }
-
-            if (!directionY)
-            {
-                npc.velocity.Y += 0.3f;
-
-                if (npc.velocity.Y > maxSpeed)
-                    npc.velocity.Y = maxSpeed;
-            }
+            else
+                Helper.SlowDown(npc, 0.09f);
 
             npc.ai[2]++;
 
@@ -162,7 +167,7 @@ namespace MysticalMagics.NPCs
         {
             float rot = (float)Math.Atan2(npc.Centre.Y - target.Centre.Y, npc.Centre.X - target.Centre.X);
 
-            Helper.SlowDown(npc);
+            Helper.SlowDown(npc, 0.98f);
 
             npc.ai[1]++;
 
@@ -200,6 +205,14 @@ namespace MysticalMagics.NPCs
 
                 npc.ai[2] = 0;
             }
+        }
+
+        public override void PostNPCLoot()
+        {
+            if (Main.rand.Next(0, 3) == 1)
+                Item.NewItem(npc.Hitbox, ItemDef.byName["MysticalMagics:SandStorm"].type, 1, false, -1, false);
+
+            Item.NewItem(npc.Hitbox, ItemDef.byName["MysticalMagics:EnchantedSandstone"].type, Main.rand.Next(15, 40), false, 0, false);
         }
     }
 }

@@ -1,0 +1,21 @@
+﻿{
+    "displayName": "Tome Of The Sandstorm",
+    "texture": "Textures/Items/Weapons/Sandstorm",
+    "size": [ 15, 50 ],
+    "maxStack": 1,
+    "value": [ 0, 1, 50, 0 ],
+    "rare": 2,
+    "tooltip": "'Shoot a raging storm of sand!'",
+    "useStyle": 5,
+    "useAnimation": 40,
+    "useTime": 40,
+    "damage": 60,
+    "knockback": 4,
+    "useSound": 24,
+    "autoReuse": true,
+    "noMelee": true,
+    "magic": true,
+    "shoot": "MysticalMagics:ProjSandStorm",
+    "shootSpeed": 13,
+    "mana": 10
+}

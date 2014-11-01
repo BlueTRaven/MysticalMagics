@@ -42,8 +42,7 @@ namespace MysticalMagics.NPCs
 
                         stopFacingPlayer = true;
 
-                        npc.velocity.X *= 0.98f;
-                        npc.velocity.Y *= 0.98f;
+                        Helper.SlowDown(npc, 0.98f);
 
                         npc.defense = 60;
 
