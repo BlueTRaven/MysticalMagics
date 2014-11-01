@@ -209,10 +209,17 @@ namespace MysticalMagics.NPCs
 
         public override void PostNPCLoot()
         {
-            if (Main.rand.Next(0, 3) == 1)
-                Item.NewItem(npc.Hitbox, ItemDef.byName["MysticalMagics:SandStorm"].type, 1, false, -1, false);
+            switch (Main.rand.Next(0, 3))
+            {
+                case 0: Item.NewItem(npc.Hitbox, ItemDef.byName["MysticalMagics:Sandstorm"].type, 1, false, -1, false); 
+                    break;
+                case 1: Item.NewItem(npc.Hitbox, ItemDef.byName["MysticalMagics:SandShotgun"].type, 1, false, -1, false); 
+                    break;  //TODO: add custom drop set: Sand themed
+                case 2: break;
+                case 3: break;
+            }
 
-            Item.NewItem(npc.Hitbox, ItemDef.byName["MysticalMagics:EnchantedSandstone"].type, Main.rand.Next(15, 40), false, 0, false);
+            Item.NewItem(npc.Hitbox, ItemDef.byName["MysticalMagics:EnchantedSandstone"].type, Main.rand.Next(15, 40), false, 0, false);    //used to make armor set?
         }
     }
 }

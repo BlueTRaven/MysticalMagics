@@ -1,0 +1,21 @@
+﻿{
+    "displayName": "Sand Shotgun",
+    "texture": "Textures/Items/Weapons/SandShotgun",
+    "size": [ 90, 30 ],
+    "maxStack": 1,
+    "value": [ 0, 0, 0, 0 ],
+    "rare": 8,
+    "tooltip": "'A sand-blasting shotgun!'",
+    "useStyle": 5,
+    "useAnimation": 15,
+    "useTime": 15,
+    "damage": 23,
+    "knockback": 1,
+    "useSound": 11,
+    "autoReuse": true,
+    "noMelee": true,
+    "ranged": true,
+    "shoot": 42,
+    "useAmmo": 42,
+    "shootSpeed": 12
+}
