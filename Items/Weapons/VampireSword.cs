@@ -22,7 +22,6 @@ namespace MysticalMagics.Items
             {
                 owner.HealEffect(Main.rand.Next(1, 2), false);
             }
-
             Lighting.AddLight(npc.Center, Color.DarkRed);
         }
     }

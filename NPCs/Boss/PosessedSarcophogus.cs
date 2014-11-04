@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 
 using TAPI;
 using Terraria;
+using Terraria.DataStructures;
 
 namespace MysticalMagics.NPCs
 {
@@ -96,14 +97,27 @@ namespace MysticalMagics.NPCs
                 Lighting.AddLight(npc.Center, Color.Orange);
 
             }
+
+            if (npc.velocity.X > 0)
+            {
+                npc.rotation += 0.09f;
+                if (npc.rotation > 1.4)
+                    npc.rotation = 1.4f;
+            }
+            if (npc.velocity.X < 0)
+            {
+                npc.rotation -= 0.09f;
+                if (npc.rotation > -1.4)
+                    npc.rotation = -1.4f;
+            }
         }
 
         public void PhaseOne(Player target)
         {
-            bool directionX = (npc.position.X - target.position.X) > 0;
-            bool directionY = (npc.position.Y - target.position.Y + 200) > 0;
+            bool directionX = (npc.Center.X - target.Center.X) > 0;
+            bool directionY = (npc.Center.Y - target.Center.Y + 200) > 0;
 
-            if ((npc.Center - target.Center).Length() > 50)
+            if ((npc.Center - new Vector2 (target.Center.X, target.Center.Y + 200)).Length() > 50)
             {
                 if (directionX)
                 {

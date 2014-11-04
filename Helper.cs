@@ -45,13 +45,41 @@ namespace MysticalMagics
          *  @Param target: the player the npc is targeting.
          *  @Param npc: the npc.
          *  @Param speed: the speed at which to charge. 
+         *  
+         *  Sometimes doesn't work properly, not sure why :s
          */
         public static void ChargeTarget(Player target, NPC npc, float speed)
         {
-            float rot = GetRotation(target, npc, 0);
+            float rot = GetRotation(target, npc, 2);
 
             npc.velocity.X = (float)Math.Cos(rot) * -speed;
             npc.velocity.Y = (float)Math.Sin(rot) * -speed;
+        }
+        /*
+         * use this one instead
+         */
+        public static void chargeTarget(CodableEntity codeEntity, Player target, float chargeSpeed)
+        {
+            codeEntity.velocity *= 0.98f;   //slow down
+
+            float distanceX = target.position.X - codeEntity.Center.X;  //get distance from the target
+            float distanceY = target.position.Y - codeEntity.Center.Y;
+
+            float totalDistance = (float) Math.Sqrt(distanceX * distanceX + distanceY * distanceY); //get the total distance
+
+            codeEntity.velocity.X = distanceX * 5f / totalDistance * chargeSpeed;
+            codeEntity.velocity.Y = distanceY * 5f / totalDistance * chargeSpeed;
+        }
+
+        public static void chargePosition(CodableEntity codeEntity, Vector2 position, float chargeSpeed)
+        {
+            float distanceX = position.X - codeEntity.Center.X;  //get distance from the target
+            float distanceY = position.Y - codeEntity.Center.Y;
+
+            float totalDistance = (float)Math.Sqrt(distanceX * distanceX + distanceY * distanceY); //get the total distance
+
+            codeEntity.velocity.X = distanceX * 5f / totalDistance * chargeSpeed;
+            codeEntity.velocity.Y = distanceY * 5f / totalDistance * chargeSpeed;
         }
 
         /*  Checks if an npc is in a certain range of the player.
@@ -60,7 +88,7 @@ namespace MysticalMagics
          *  @Param range: the distance you want to check.
          *  @Param inout: whether or not to check if the target is inside the range our outside the range.
          */
-        public static bool IsInRange(Player target, NPC npc, int range, bool insideRange)
+        public static bool IsInRange(Player target, CodableEntity npc, int range, bool insideRange)
         {
             if (insideRange)
             {
@@ -79,10 +107,60 @@ namespace MysticalMagics
         /*
          *  Slows down the npc.
          */
-        public static void SlowDown(NPC npc, float speed = 0.98f)
+        public static void SlowDown(CodableEntity codeEnt, float speed = 0.98f)
         {
-            npc.velocity.X *= speed;
-            npc.velocity.Y *= speed;
+            codeEnt.velocity.X *= speed;
+            codeEnt.velocity.Y *= speed;
+        }
+
+        public static void MoveToLocation(CodableEntity codeEntity, Vector2 location, float movement = 0.07f, float mult = 6f)  //copied mostly from terraria's source code, EoC
+        {
+            float distX = location.X - codeEntity.Center.X;
+            float distY = location.Y - codeEntity.Center.Y;
+            float distTotal = (float)System.Math.Sqrt((double)(distX * distX + distY * distY));
+
+            distTotal = mult / distTotal;
+            distX *= distTotal;
+            distY *= distTotal;
+
+            if (codeEntity.velocity.X < distX)
+            {
+                codeEntity.velocity.X += movement;
+                if (codeEntity.velocity.X < 0f && distX > 0f)
+                {
+                    codeEntity.velocity.X += movement;
+                }
+            }
+            else
+            {
+                if (codeEntity.velocity.X > distX)
+                {
+                    codeEntity.velocity.X -= movement;
+                    if (codeEntity.velocity.X > 0f && distX < 0f)
+                    {
+                        codeEntity.velocity.X -= movement;
+                    }
+                }
+            }
+            if (codeEntity.velocity.Y < distY)
+            {
+                codeEntity.velocity.Y += movement;
+                if (codeEntity.velocity.Y < 0f && distY > 0f)
+                {
+                    codeEntity.velocity.Y += movement;
+                }
+            }
+            else
+            {
+                if (codeEntity.velocity.Y > distY)
+                {
+                    codeEntity.velocity.Y -= movement;
+                    if (codeEntity.velocity.Y > 0f && distY < 0f)
+                    {
+                        codeEntity.velocity.Y -= movement;
+                    }
+                }
+            }
         }
 
         public static void SlowDown(Projectile proj, float speed = 0.98f)

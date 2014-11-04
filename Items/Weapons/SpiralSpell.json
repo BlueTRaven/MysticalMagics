@@ -15,7 +15,7 @@
     "autoReuse": false,
     "noMelee": true,
     "magic": true,
-    "shoot": "MysticalMagics:ProjSpiral",
+    "shoot": "MysticalMagics:ProjFlier",
     "shootSpeed": 1.2,
     "mana": 0,
 

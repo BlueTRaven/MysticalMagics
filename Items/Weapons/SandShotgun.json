@@ -15,7 +15,7 @@
     "autoReuse": true,
     "noMelee": true,
     "ranged": true,
-    "shoot": 42,
+    "shoot": /*"MysticalMagics:ProjFlier",*/    42,
     "useAmmo": 42,
-    "shootSpeed": 12
+    "shootSpeed": 12    //12
 }
